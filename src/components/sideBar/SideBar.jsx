@@ -6,16 +6,16 @@ import { Link } from 'react-router-dom';
 export const SideBar = () => {
     const list = [
         {
-            path: "/statistics",
+            path: "/main/statistics",
             name: "الأحصائيات",
             icon: BsFillBarChartLineFill
         }, {
-            path: "/add-order",
+            path: "/main/add-order",
             name: " إضافة طلب",
             icon: BsPlusCircle
         },
         {
-            path: "/my-orders",
+            path: "/main/my-orders",
             name: "طلباتي",
             icon: BsArrowLeftRight
         },

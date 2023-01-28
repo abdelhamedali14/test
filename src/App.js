@@ -11,20 +11,19 @@ import { useState } from "react";
 import { Main } from "./pages/main/Main";
 
 function App() {
-  const [iseLogged, setLoggedIn] = useState(true);
+  const [iseLogged, setLoggedIn] = useState(false);
   return (
     <>
       {/* <SideBar /> */}
       <BrowserRouter>
         <Routes>
-          {iseLogged && (<Route path="main" element={<Main/>}/>
-          
-          )}
+          {iseLogged && <Route path="/" element={<Main />} />}
           {!iseLogged && <Route path="Register" element={<Register />} />}
           {!iseLogged && <Route path="/" element={<Login />} />}
           {!iseLogged && (
             <Route path="reset-password" element={<ResetPassword />} />
           )}
+          {iseLogged && <Route path="main/*" element={<Main />} />}
         </Routes>
       </BrowserRouter>
       {/* <HomePage/> */}

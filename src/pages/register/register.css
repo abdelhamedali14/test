@@ -33,7 +33,7 @@ form .user-details .input-box{
   margin-bottom: 15px;
   width: calc(100% / 2 - 20px);
 }
-form .input-box span.details{
+form .input-box label.details{
   display: block;
   font-weight: 500;
   margin-bottom: 5px;
@@ -106,7 +106,7 @@ form .input-box span.details{
  form .button input:hover{
   background: linear-gradient(-135deg, #71b7e6, #9b59b6);
   }
-.sign-in span{
+.sign-in label{
     font-weight: 600;
     font-size: 1rem;
     margin: 0 5px;

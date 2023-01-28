@@ -1,87 +1,118 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
+import { InputField } from '../../components/inputField/InputField'
 import "./register.css"
 
-
 export const Register = () => {
+    const inputsData = [
+        {
+            label: "الاسم",
+            pleacHolder: "أدخل الاسم",
+            property: "name",
+            type: "text",
+            inputType: "input"
+        },
+        {
+            label: "أسم المستخدم",
+            pleacHolder: "أدخل أسم المستخدم",
+            property: "username",
+            type: "text",
+            inputType: "input"
+        },
+        {
+            label: "البريد الإلكتروني",
+            pleacHolder: " أدخل البريد الإلكتروني",
+            property: "email",
+            type: "email",
+            inputType: "input"
+        },
+        {
+            label: "الهاتف الاول",
+            pleacHolder: "أدخل الهاتف الاول",
+            property: " phone_1",
+            type: "text",
+            inputType: "input"
+        },
+        {
+            label: "الهاتف الثاني",
+            pleacHolder: "أدخل الهاتف الثاني",
+            property: "phone_2",
+            type: "text",
+            inputType: "input"
+        },
+        {
+            label: "كلمة السر",
+            pleacHolder: "أدخل كلمة السر",
+            property: "password",
+            type: "password",
+            inputType: "input"
+        },
+        {
+            label: "تأكيد كلمة السر",
+            pleacHolder: "أدخل تأكيد  كلمة السر",
+            property: "password_2",
+            type: "password",
+            inputType: "input"
+        },
+    ]
+    const [userData, setUserData] = useState({
+        name: "",
+        username: "",
+        email: "",
+        phone_1: "",
+        phone_2: "",
+        password: "",
+        password_2: "",
+        gender: 1,
+        identification_type: "",
+        identification_number: "",
+        identification_image: "",
+        user_type: 1,
+        sign: "",
+        personal_image: "",
+        country: ""
+    })
+
+    const onChangeHandler = (propperty, value) => {
+        setUserData((prev) => {
+            prev[propperty] = value
+            return prev
+        })
+        console.log(userData);
+    }
+    const handelSubmit = (e) => {
+        e.preventDefault()
+        console.log(userData);
+    }
+   
+
+
     return (
         <>
             <div className="Register-container">
                 <div className="title">التسجيل</div>
                 <div className="content">
-                    <form action="submit">
+                    <form action="submit" onSubmit={handelSubmit}>
                         <div className="user-details">
-                            <div className="input-box">
-                                <span class="details">الأسم </span>
-                                <input type="text" placeholder="أدخل الأسم" required />
-                            </div>
-                            <div class="input-box">
-                                <span class="details">أسم المستخدم</span>
-                                <input type="text" placeholder="أدخل أسم المستخدم" required />
-                            </div>
-                            <div class="input-box">
-                                <span class="details">البريد الألكتروني</span>
-                                <input type="email" placeholder="أدخل البريد اللإلكتروني" required />
-                            </div>
-                            <div class="input-box">
-                                <span class="details"  > الهاتف الأول </span>
-                                <input type="number" placeholder="أدخل الهاتف الأول  " required />
-                            </div>
-                            <div class="input-box">
-                                <span class="details"> الهاتف الثاني</span>
-                                <input type="number" placeholder="أدخل الهاتف الثاني" required />
-                            </div>
-                            <div class="input-box">
-                                <span class="details">كلمة السر</span>
-                                <input type="password" placeholder="أدخل كلمة السر" required />
-                            </div>
-                            <div class="input-box">
-                                <span class="details">تأكيد كلمة السر</span>
-                                <input type="password" placeholder="تأكيد كلمة السر" required />
-                            </div>
-                            <div className="input-box">
-                            <span class="details">البلد</span>
-                                <select name="country" id="country">
-                                    <option value="saudia arabia">السعودية</option>
-                                    <option value="egypt">مصر</option>
-                                </select>
-                            </div>
+                            {inputsData.map((input, i) => {
+                                return <InputField label={input.label} pleacHolder={input.pleacHolder} key={i}
+                                    property={input.property} setUserData={onChangeHandler} inputType={input.inputType} />
+                            })}
                         </div>
-                        <div className="gender-details">
-                            <input type="radio" name="gender" id="dot-1" />
-                            <input type="radio" name="gender" id="dot-2" />
-                            <span className="gender-title">النوع</span>
-                            <div className="category">
-                                <label for="dot-1">
-                                    <span className="dot one"></span>
-                                    <span className="gender">ذكر</span>
-                                </label>
-                                <label for="dot-2">
-                                    <span className="dot two"></span>
-                                    <span className="gender">أنثي</span>
-                                </label>
-                            </div>
-                            <div className="button">
-                                <input type="submit" value="تسجيل" />
-                            </div>
+                        <InputField 
+                                    property={"gender"} setUserData={onChangeHandler} inputType={"radio"} />
 
+                        <div className="button">
+                            <input type="submit" value="تسجيل" />
                         </div>
                     </form>
                 </div>
-               <div className="sign-in">
-                <span>هل لديك حساب  بالفعل ؟</span>
-                <Link className='go-to-signin' to={"login"} >تسجيل الدخول</Link>
-               </div>
-            
 
-
-
+                <div className="sign-in">
+                    <label>هل لديك حساب  بالفعل ؟</label>
+                    <Link className='go-to-signin' to="/" >تسجيل الدخول</Link>
+                </div>
             </div>
-
-
-
-
-
         </>
 
 

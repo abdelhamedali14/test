@@ -13,9 +13,9 @@ export const Main = () => {
                 <div className="routes-wrapper w-100">
                     <Routes >
                         <Route path="/" element={<HomePage />} />
-                        <Route path="/my-orders" element={<MyOrders />} />
-                        <Route path="/add-order" element={<AddOrder />} />
-                        <Route path="/statistics" element={<Statistics />} />
+                        <Route path="my-orders" element={<MyOrders />} />
+                        <Route path="add-order" element={<AddOrder />} />
+                        <Route path="statistics" element={<Statistics />} />
                     </Routes>
 
                 </div>
